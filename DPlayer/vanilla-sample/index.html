@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mlytics P2SP </title>
+  <script src="https://cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.5"></script>
+  <script src="https://src.litix.io/core/4/mux.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
+</head>
+
+<body>
+  <div style="width: 800px">
+    <div id="video" />
+  </div>
+  <script>
+    const driver = mlysdk.driver.initialize({
+      client: {
+        id: 'ccsphrm2vr0tn7fdqtsg',
+        key: 'qmfF9JsTVotHMQ8jgwEIUPCpO5B7A0ea'
+      },
+      server: {
+        host: {
+          fqdn: 'vsp.mlytics.us'
+        }
+      }
+    });
+
+    const src = 'https://origin.pcdn.gordon.cf/stream/2IxQ8HrIQULlAU7hB7WQ0UZQ8CW/index.m3u8';
+
+    const video = document.getElementById('video');
+    const dp = new window.DPlayer({
+      container: video,
+      autoplay: true,
+      video: {
+        url: src,
+        type: 'customHls',
+        customType: {
+          customHls: function (video, player) {
+            const hls = new Hls({
+              loader: driver.integrations.HLSLoader
+            });
+            hls.loadSource(video.src);
+            hls.attachMedia(video);
+          }
+        }
+      }
+    });
+
+    dp.on('loadstart', function () {
+      mux.monitor(dp.video, {
+        data: {
+          env_key: "hmp0tvs823e2hovchm60o2m11",
+          viewer_user_id: driver.info.sessionID,
+          sub_property_id: "1001642588942",
+          view_session_id: "cehcdiphseaa0coe0c00",
+          custom_1: "cehcdiphseaa0coe0c10"
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
