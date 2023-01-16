@@ -66,7 +66,7 @@
     mounted() {
       const src = 'PLAYLIST_URL';
 
-      const video = this.$refs.video;
+      const video = this.$refs.videoRef;
       this.dp = new DPlayer({
         container: video,
         autoplay: true,
