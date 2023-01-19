@@ -9,8 +9,8 @@ npm install @mlytics/p2sp-sdk@0.8.0
 
 **`cdn`**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/peripheral/videojs-hls.min.js"></script>
+<script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
+<script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/peripheral/videojs-hls.min.js"></script>
 ```
 
 2. Download `video.js` and `videojs-mux` for HLS integration.
@@ -22,8 +22,8 @@ npm install video.js videojs-mux
 
 **`cdn`**
 ```html
-<script src="https://vjs.zencdn.net/7.18.0/video.min.js"></script>
-<script src="https://src.litix.io/videojs/4/videojs-mux.js"></script>
+<script src="https://vjs.fusioncdn.com/7.18.0/video.min.js"></script>
+<script src="https://mjs.fusioncdn.com/videojs/4/videojs-mux.js"></script>
 ```
 
 3. Bind `video.js` with our HLS loader plugin manually if you install video.js via `npm`.

@@ -15,13 +15,8 @@ export default {
   setup() {
     driver.initialize({
       client: {
-        id: 'ccsphrm2vr0tn7fdqtsg',
-        key: 'qmfF9JsTVotHMQ8jgwEIUPCpO5B7A0ea'
-      },
-      server: {
-        host: {
-          fqdn: 'vsp.mlytics.us'
-        }
+        id: 'cehcdiphseaa0coe0c10',
+        key: '3rFGoxUluezmM7ZyRj2NiQHsCpvJaDEY'
       }
     });
   },
@@ -34,7 +29,7 @@ export default {
           loader: HLSLoader
         },
         source: {
-          src: 'https://origin.pcdn.gordon.cf/stream/2IxQ8HrIQULlAU7hB7WQ0UZQ8CW/index.m3u8',
+          src: 'https://1001642588942-cloudfront-z6frgspx.d-apm.com/hls/5ec5f77c-ba77-4054-af5a-90431f7e9904.mp4/5ec5f77c-ba77-4054-af5a-90431f7e9904.m3u8',
           type: 'application/vnd.apple.mpegurl'
         },
         mux: {
