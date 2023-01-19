@@ -9,7 +9,7 @@ npm install @mlytics/p2sp-sdk@0.8.0
 
 **`cdn`**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
+<script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
 ```
 
 2. Download `DPlayer` and `mux` for HLS integration.
@@ -21,8 +21,8 @@ npm install dplayer mux-embed
 
 **`cdn`**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>
-<script src="https://src.litix.io/core/4/mux.js"></script>
+<script src="https://jsdelivr.fusioncdn.com/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>
+<script src="https://mjs.fusioncdn.com/core/4/mux.js"></script>
 ```
 
 3. When page is loading, call `mlysdk.driver.initialize()`.

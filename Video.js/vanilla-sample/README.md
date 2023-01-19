@@ -3,15 +3,15 @@
 1. Install `video.js`, `videojs-mux`.
 
   ```html
-  <script src="https://vjs.zencdn.net/7.18.0/video.min.js"></script>
-  <script src="https://src.litix.io/videojs/4/videojs-mux.js"></script>
+  <script src="https://vjs.fusioncdn.com/7.18.0/video.min.js"></script>
+  <script src="https://mjs.fusioncdn.com/videojs/4/videojs-mux.js"></script>
   ```
 
 2. Install `driver` and `videojs-hls` plugin.
 
   ```html
-  <script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/peripheral/videojs-hls.min.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/peripheral/videojs-hls.min.js"></script>
   ```
 
 3. Call `mlysdk.driver.initialize()` first.

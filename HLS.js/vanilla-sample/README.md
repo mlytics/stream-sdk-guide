@@ -3,14 +3,14 @@
 1. Install `hls.js`, `mux`.
 
   ```html
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.5"></script>
-  <script src="https://src.litix.io/core/4/mux.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/hls.js@1.1.5"></script>
+  <script src="https://mjs.fusioncdn.com/core/4/mux.js"></script>
   ```
 
 2. Install `driver`.
 
   ```html
-  <script src="https://cdn.jsdelivr.net/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
   ```
 
 3. Call `mlysdk.driver.initialize()` first.
