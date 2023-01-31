@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <video id="video" width="960" height="400" controls></video>
+  <video id="video" controls style="width: 100%; max-width: 800px"></video>
   <script>
     const driver = mlysdk.driver.initialize({
       client: {
@@ -34,6 +34,8 @@
     }
 
     mux.monitor(video, {
+      hlsjs: hls,
+      Hls: Hls,
       data: {
         env_key: "hmp0tvs823e2hovchm60o2m11",
         viewer_user_id: driver.info.sessionID,

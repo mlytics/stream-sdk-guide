@@ -15,7 +15,7 @@
 
 <body>
   <div style="width: 800px">
-    <div id="video" />
+    <div id="video" style="width: 100%; maxWidth: 800px"/>
   </div>
   <script>
     const driver = mlysdk.driver.initialize({
@@ -41,22 +41,23 @@
             });
             hls.loadSource(video.src);
             hls.attachMedia(video);
+
+            mux.monitor(video, {
+              hlsjs: hls,
+              Hls,
+              data: {
+                env_key: "hmp0tvs823e2hovchm60o2m11",
+                viewer_user_id: driver.info.sessionID,
+                sub_property_id: "1001642588942",
+                view_session_id: "cehcdiphseaa0coe0c00",
+                custom_1: "cehcdiphseaa0coe0c10"
+              }
+            });
           }
         }
       }
     });
 
-    dp.on('loadstart', function () {
-      mux.monitor(dp.video, {
-        data: {
-          env_key: "hmp0tvs823e2hovchm60o2m11",
-          viewer_user_id: driver.info.sessionID,
-          sub_property_id: "1001642588942",
-          view_session_id: "cehcdiphseaa0coe0c00",
-          custom_1: "cehcdiphseaa0coe0c10"
-        }
-      });
-    });
   </script>
 </body>
 

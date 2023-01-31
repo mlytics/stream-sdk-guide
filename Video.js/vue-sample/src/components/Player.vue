@@ -1,6 +1,6 @@
 <template>
     <div>
-        <video ref="video" class="video-js" style="width: 100%; maxWidth: 500px"></video>
+        <video ref="video" class="video-js" style="width: 100%; maxWidth: 800px"></video>
     </div>
 </template>
 

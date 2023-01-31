@@ -30,7 +30,7 @@ const Player = (props) => {
     }, [playerRef]);
 
     return <div data-vjs-player>
-        <video ref={videoRef} className="video-js" style={{ width: "100%", maxWidth: "500px" }} />
+        <video ref={videoRef} className="video-js" style={{ width: "100%", maxWidth: "800px" }} />
     </div>;
 }
 export default Player;

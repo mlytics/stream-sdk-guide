@@ -49,19 +49,25 @@
   });
   ```
 
-5. Wait until the video DOM object, created by `DPlayer`, is finished, and then call `mux.monitor()` including Mux data options.
+5. Call `mux.monitor()` including Mux data options. Be sure to pass in the hlsjs instance and the Hls constructor.
 
   ```javascript
-  dp.on('loadstart', function () {
-    mux.monitor(dp.video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
-      data: {
-        env_key: '...',
-        sub_property_id: '...',
-        view_session_id: '...',
-        viewer_user_id: driver.info.sessionID,
-        custom_1: '...'
-      }
-    });
+  new window.DPlayer({
+    ...
+    customHls: (video) => {
+      ...
+      mux.monitor(video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
+        hlsjs: hls,
+        Hls: Hls,
+        data: {
+          env_key: '...',
+          sub_property_id: '...',
+          view_session_id: '...',
+          viewer_user_id: driver.info.sessionID,
+          custom_1: '...'
+        }
+      });
+    }
   });
   ```
 
