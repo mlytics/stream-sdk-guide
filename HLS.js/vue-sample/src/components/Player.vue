@@ -33,12 +33,11 @@ export default {
         this.hls.loadSource(src);
         this.hls.attachMedia(video);
 
-        const muxOptions = {
-          ...this.options.mux,
-          hlsjs: this.hls,
+        mux.monitor(video, {
           Hls: Hls,
-        }
-        mux.monitor(video, muxOptions);
+          hlsjs: this.hls,
+          ...this.options.mux
+        });
       }
     }
   },

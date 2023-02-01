@@ -30,12 +30,11 @@ const Player = (props) => {
             hls.loadSource(video.src);
             hls.attachMedia(video);
 
-            const muxOptions = {
-              ...props.options.mux,
+            mux.monitor(video, {
+              Hls: Hls,
               hlsjs: hls,
-              Hls: Hls
-            }
-            mux.monitor(video, muxOptions);
+              ...props.options.mux
+            });
           }
         }
       }

@@ -84,7 +84,7 @@
   export default Player;
   ```
 
-5. Call `mux.monitor()` and include Mux data options. Be sure to pass in the hlsjs instance and the Hls constructor.
+5. Call `mux.monitor()` and include Mux data options. Be sure to pass in the Hls constructor and its instance.
 
   ```javascript
   useEffect(() => {
@@ -92,8 +92,8 @@
     if (Hls.isSupported() && !hls) {
       ...
       mux.monitor(video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
-        hlsjs: hls,
         Hls: Hls,
+        hlsjs: hls,
         data: {
           env_key: '...',
           sub_property_id: '...',

@@ -43,8 +43,8 @@
             hls.attachMedia(video);
 
             mux.monitor(video, {
+              Hls: Hls,
               hlsjs: hls,
-              Hls,
               data: {
                 env_key: "hmp0tvs823e2hovchm60o2m11",
                 viewer_user_id: driver.info.sessionID,
