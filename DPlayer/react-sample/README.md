@@ -95,14 +95,16 @@
   export default Player;
   ```
 
-5. Wait until the video DOM object, created by `DPlayer`, is finished, and then call `mux.monitor()` including Mux data options.
+5. Call `mux.monitor()` including Mux data options. Be sure to pass in the Hls constructor and its instance.
 
   ```javascript
-  useEffect(() => {
+  new DPlayer({
     ...
-    const dp = dpRef.current;
-    dp.on('loadstart', () => {
-      mux.monitor(dp.video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
+    customHls: (video) => {
+      ...
+      mux.monitor(video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
+        Hls: Hls,
+        hlsjs: hls,
         data: {
           env_key: '...',
           sub_property_id: '...',
@@ -111,8 +113,8 @@
           custom_1: '...'
         }
       });
-    });
-  }, [videoRef]);
+    }
+  });
   ```
 
 Now start the service and try to watch request logs in a browser. You could find that the domains in urls of `.m3u8` and `.ts` files, video player seeks for,  would be one of the cdn domains in stream settings rather than the origin domain.

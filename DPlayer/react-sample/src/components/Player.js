@@ -29,6 +29,12 @@ const Player = (props) => {
             });
             hls.loadSource(video.src);
             hls.attachMedia(video);
+
+            mux.monitor(video, {
+              Hls: Hls,
+              hlsjs: hls,
+              ...props.options.mux
+            });
           }
         }
       }
@@ -38,16 +44,13 @@ const Player = (props) => {
 
   useEffect(() => {
     const dp = dpRef.current;
-    dp.on('loadstart', () => {
-      mux.monitor(dp.video, props.options.mux);
-    })
     return () => {
       if (dp) dp.destroy();
     }
   }, [dpRef]);
 
   return (
-    <div id="video" ref={videoRef} />
+    <div id="video" ref={videoRef} style={{width: "100%", maxWidth: "800px"}}/>
   );
 }
 export default Player;

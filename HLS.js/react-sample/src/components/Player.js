@@ -32,9 +32,12 @@ const Player = (props) => {
       hls = hlsRef.current;
       hls.loadSource(src);
       hls.attachMedia(video);
-      if (props.options.mux) {
-        mux.monitor(video, props.options.mux);
-      }
+
+      mux.monitor(video, {
+        Hls: Hls,
+        hlsjs: hls,
+        ...props.options.mux
+      });
     }
 
   }, [videoRef]);
@@ -45,7 +48,7 @@ const Player = (props) => {
       controls={controls}
       autoPlay={autoplay}
       ref={videoRef}
-      style={{ width: "100%", maxWidth: "500px" }} />
+      style={{ width: "100%", maxWidth: "800px" }} />
   );
 }
 export default Player;

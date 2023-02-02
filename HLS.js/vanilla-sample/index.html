@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <video id="video" width="960" height="400" controls></video>
+  <video id="video" controls style="width: 100%; max-width: 800px"></video>
   <script>
     const driver = mlysdk.driver.initialize({
       client: {
@@ -31,17 +31,19 @@
       });
       hls.loadSource(src);
       hls.attachMedia(video);
-    }
 
-    mux.monitor(video, {
-      data: {
-        env_key: "hmp0tvs823e2hovchm60o2m11",
-        viewer_user_id: driver.info.sessionID,
-        sub_property_id: "1001642588942",
-        view_session_id: "cehcdiphseaa0coe0c00",
-        custom_1: "cehcdiphseaa0coe0c10"
-      }
-    });
+      mux.monitor(video, {
+        Hls: Hls,
+        hlsjs: hls,
+        data: {
+          env_key: "hmp0tvs823e2hovchm60o2m11",
+          viewer_user_id: driver.info.sessionID,
+          sub_property_id: "1001642588942",
+          view_session_id: "cehcdiphseaa0coe0c00",
+          custom_1: "cehcdiphseaa0coe0c10"
+        }
+      });
+    }
   </script>
 </body>
 

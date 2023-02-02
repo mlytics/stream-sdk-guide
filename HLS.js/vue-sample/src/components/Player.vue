@@ -1,5 +1,5 @@
 <template>
-  <video id="video" ref="videoRef" style="width: 100%; maxWidth: 500px" :controls="options.controls"
+  <video id="video" ref="videoRef" style="width: 100%; maxWidth: 800px" :controls="options.controls"
     :autoplay="options.autoplay" />
 </template>
 
@@ -33,9 +33,11 @@ export default {
         this.hls.loadSource(src);
         this.hls.attachMedia(video);
 
-        if (this.options.mux) {
-          mux.monitor(video, this.options.mux);
-        }
+        mux.monitor(video, {
+          Hls: Hls,
+          hlsjs: this.hls,
+          ...this.options.mux
+        });
       }
     }
   },

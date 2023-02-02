@@ -81,7 +81,7 @@
   </script>
   ```
 
-5. Call `mux.monitor()` and include Mux data options.
+5. Call `mux.monitor()` and include Mux data options. Be sure to pass in the Hls constructor and its instance.
 
   ```javascript
   mounted() {
@@ -89,6 +89,8 @@
     if (Hls.isSupported() && !this.hls) {
       ...
       mux.monitor(video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
+        Hls: Hls,
+        hlsjs: hls,
         data: {
           env_key: '...',
           sub_property_id: '...',
