@@ -1,6 +1,6 @@
-[![](https://img.shields.io/badge/npm_%7C_@mlytics%2Fp2sp--sdk-v0.8.0-orange)](https://www.npmjs.com/package/@mlytics/p2sp-sdk)
+[![](https://img.shields.io/badge/npm_%7C_@mlytics%2Fp2sp--sdk-v0.9.0-orange)](https://www.npmjs.com/package/@mlytics/p2sp-sdk)
 
-# stream-sdk-guide (v0.8.0)
+# stream-sdk-guide
 
 - **DPlayer**
   - [Vanilla](./DPlayer/vanilla-sample)
