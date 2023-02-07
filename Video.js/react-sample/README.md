@@ -1,128 +1,133 @@
+---
+title: react
+category: 63d9d34969da0c007a7219be
+slug: video-js-react
+---
 # Quick Start | Integrate SDK to Videojs via react
 
-1. Install `video.js`.
+## Install SDK
 
-    ```bash
-    npm install video.js
-    ```
+Install the bundled packages.
 
-2. Install `driver`.
+```bash
+npm install @mlytics/p2sp-sdk@latest
+```
 
-    ```bash
-    npm install @mlytics/p2sp-sdk
-    ```
 
-3. In `index.html`, append config script file to the tail part of `<head>` tag.
 
-    ```html
-    <header>
-      ...
-      <script src="https://sdkjs.fusioncdn.com/{CLIENT_ID}-mlysdk.js"></script>
-    </header>
-    ```
+## Install Video.js
 
-4. To make `video.js` use HLS, call `VideojsHlsSourcePlugin.register()` from SDK module.
+Install the latest Video.js package.
 
-    ```javascript
-    import videojs from 'video.js';
+```bash
+npm install video.js
+```
 
-    import { VideojsHlsSourcePlugin } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
 
-    VideojsHlsSourcePlugin.register(videojs);
-    ```
 
-5. When page is loading, call `driver.initialize()` first.
+## Include Config Script
 
-    ```javascript
-    import { VideojsHlsSourcePlugin } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
+In `index.html`, append config script file to the tail part of `<head>` tag.
 
-    import { useEffect } from 'react';
+```html public/index.html
+<header>
+  ...
+  <script src="https://sdkjs.fusioncdn.com/{CLIENT_ID}-mlysdk.js"></script>
+</header>
+```
 
-    import Player from './components/Player';
 
-    const App = () => {
-      useEffect(() => {
-        driver.initialize();
-      }, []);
 
-      return (
-        <><Player /></>
-      );
+## Bind HLS loader
+
+Bind Video.js with our HLS loader plugin. To make Video.js use HLS, call `VideojsHlsSourcePlugin.register()` from SDK module. Here's an example showing how you could bind HLS loader SDK with JavaScript.
+
+```javascript
+import videojs from 'video.js';
+
+import { VideojsHlsSourcePlugin } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
+
+VideojsHlsSourcePlugin.register(videojs);
+```
+
+
+
+## Initialize SDK
+
+When page is loading, call `driver.initialize()` first. Here's an example showing how you could initialize SDK with JavaScript.
+
+```javascript
+import { VideojsHlsSourcePlugin } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
+
+import { useEffect } from 'react';
+
+import Player from './components/Player';
+
+const App = () => {
+  useEffect(() => {
+    driver.initialize();
+  }, []);
+
+  return (
+    <><Player /></>
+  );
+};
+
+export default App;
+```
+
+
+
+## Configure SDK Adapter
+
+In order to use SDK to download the video, we need to configure the VideoJS Adapter by passing your VideoJS instance. Call `driver.extensions.VideojsHlsPlugin.adapt()` after player is ready. Here's an example showing how you could configure SDK Adapter with JavaScript.
+
+```javascript
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
+import { useEffect, useRef } from 'react';
+
+const Player = () => {
+  const videoRef = useRef(null);
+  const playerRef = useRef(null);
+
+  useEffect(() => {
+    const src = 'PLAYLIST_URL';
+
+    const video = videoRef.current;
+    if (!playerRef.current) {
+      playerRef.current = videojs(video, {
+        autoplay: true,
+        controls: true,
+        sources: [{ src: src, type: 'application/vnd.apple.mpegurl' }]
+      });
+
+      // To configure the VideoJS Adapter by passing your VideoJS instance
+      driver.extensions.VideojsHlsPlugin.adapt(playerRef.current);
+    }
+  }, [videoRef]);
+
+  useEffect(() => {
+    const player = playerRef.current;
+    return () => {
+      if (player && !player.isDisposed()) {
+        player.dispose();
+        playerRef.current = null;
+      }
     };
+  }, [playerRef]);
 
-    export default App;
-    ```
+  return <div data-vjs-player>
+    <video ref={videoRef} className="video-js" style={{ width: "100%", maxWidth: "500px" }} />
+  </div>;
+};
 
-6. Call `video.js` like you normally would.
-
-    ```javascript
-    import videojs from 'video.js';
-    import 'video.js/dist/video-js.css';
-    import { useEffect, useRef } from 'react';
-
-    const Player = () => {
-      const videoRef = useRef(null);
-      const playerRef = useRef(null);
-
-      useEffect(() => {
-        const src = 'PLAYLIST_URL';
-
-        const video = videoRef.current;
-        if (!playerRef.current) {
-          playerRef.current = videojs(video, {
-            autoplay: true,
-            controls: true,
-            sources: [{ src: src, type: 'application/vnd.apple.mpegurl' }]
-          });
-        }
-      }, [videoRef]);
-
-      useEffect(() => {
-        const player = playerRef.current;
-        return () => {
-          if (player && !player.isDisposed()) {
-            player.dispose();
-            playerRef.current = null;
-          }
-        };
-      }, [playerRef]);
-
-      return <div data-vjs-player>
-        <video ref={videoRef} className="video-js" style={{ width: "100%", maxWidth: "500px" }} />
-      </div>;
-    };
-
-    export default Player;
-    ```
-
-7. Call` driver.extensions.VideojsHlsPlugin.adapt()` after player is ready.
-
-    ```javascript
-    import videojs from 'video.js';
-    import 'video.js/dist/video-js.css';
-    import { useEffect, useRef } from 'react';
-
-    import { driver } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
-
-    const Player = () => {
-      const videoRef = useRef(null);
-      const playerRef = useRef(null);
-
-      useEffect(() => {
-        const src = '{PLAYLIST_URL}';
-
-        const video = videoRef.current;
-        if (!playerRef.current) {
-          playerRef.current = videojs(video, {
-            ...
-          });
-          driver.extensions.VideojsHlsPlugin.adapt(playerRef.current);
-        }
-      }, [videoRef]);
-
-      ...
-
-    export default Player;
-    ```
+export default Player;
+```
 
 Now start the service and try to watch request logs in a browser. You could find that the domains in urls of `.m3u8` and `.ts` files, video player seeks for,  would be one of the cdn domains in stream settings rather than the origin domain.
+
+
+# Full example
+
+See [react demo](https://github.com/mlytics/stream-sdk-guide/tree/main/Video.js/react-sample)
