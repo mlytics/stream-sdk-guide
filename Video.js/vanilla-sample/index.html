@@ -10,10 +10,9 @@
   <link href="https://vjs.fusioncdn.com/7.18.0/video-js.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/@videojs/themes@1/dist/fantasy/index.css" rel="stylesheet">
   <script src="https://vjs.fusioncdn.com/7.18.0/video.min.js"></script>
-  <script src="https://mjs.fusioncdn.com/videojs/4/videojs-mux.js"></script>
-  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/driver.min.js"></script>
-  <script
-    src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@0.8.0/bundle/peripheral/player/videojs-hls.min.js"></script>
+  <script src="https://sdkjs.fusioncdn.com/cehcdiphseaa0coe0c10-mlysdk.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@latest/bundle/driver.min.js"></script>
+  <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@latest/bundle/peripheral/player/videojs-hls.min.js"></script>
 </head>
 
 <body>
@@ -21,12 +20,7 @@
     <video id="video" class="video-js vjs-theme-fantasy" style="width: 100%; max-width: 800px"></video>
   </div>
   <script>
-    const driver = mlysdk.driver.initialize({
-      client: {
-        id: 'cehcdiphseaa0coe0c10',
-        key: '3rFGoxUluezmM7ZyRj2NiQHsCpvJaDEY'
-      }
-    });
+    const driver = mlysdk.driver.initialize();
 
     const src = 'https://1001642588942-cloudfront-z6frgspx.d-apm.com/hls/5ec5f77c-ba77-4054-af5a-90431f7e9904.mp4/5ec5f77c-ba77-4054-af5a-90431f7e9904.m3u8';
 
@@ -34,24 +28,9 @@
     const player = videojs(video, {
       autoplay: true,
       controls: true,
-      html5: {
-        hlsConfig: {
-          loader: driver.integrations.HLSLoader
-        }
-      },
-      sources: [{ src: src, type: 'application/vnd.apple.mpegurl' }],
-      plugins: {
-        mux: {
-          data: {
-            env_key: "hmp0tvs823e2hovchm60o2m11",
-            viewer_user_id: driver.info.sessionID,
-            sub_property_id: "1001642588942",
-            view_session_id: "cehcdiphseaa0coe0c00",
-            custom_1: "cehcdiphseaa0coe0c10"
-          }
-        }
-      }
+      sources: [{ src: src, type: 'application/vnd.apple.mpegurl' }]
     });
+    driver.extensions.VideojsHlsPlugin.adapt(player);
   </script>
 </body>
 
