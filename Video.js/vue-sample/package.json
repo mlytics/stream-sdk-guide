@@ -8,10 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@mlytics/p2sp-sdk": "0.8.0",
+    "@mlytics/p2sp-sdk": "file:.yalc/@mlytics/p2sp-sdk",
     "core-js": "^3.8.3",
     "video.js": "^7.18.0",
-    "videojs-mux": "^4.11.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {

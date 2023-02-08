@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 
+import { driver } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
+
 const Player = (props) => {
     const videoRef = useRef(null);
     const playerRef = useRef(null);
@@ -12,6 +14,7 @@ const Player = (props) => {
         const video = videoRef.current;
         if (!playerRef.current) {
             playerRef.current = videojs(video, options);
+            driver.extensions.VideojsHlsPlugin.adapt(playerRef.current);
         } else {
             const player = playerRef.current;
             player.autoplay(options.autoplay);

@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/npm_%7C_@mlytics%2Fp2sp--sdk-v0.9.0-orange)](https://www.npmjs.com/package/@mlytics/p2sp-sdk)
+[![](https://img.shields.io/badge/npm_%7C_@mlytics%2Fp2sp--sdk-v0.9.1-orange)](https://www.npmjs.com/package/@mlytics/p2sp-sdk)
 
 # stream-sdk-guide
 
