@@ -1,0 +1,31 @@
+# You can view our full documentation here: https://docs.readme.com/docs/rdme
+name: ReadMe GitHub Action 🦉
+
+on:
+  push:
+    tags:
+      - prod-*
+
+jobs:
+  push-to-readmeio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo 📚
+        uses: actions/checkout@v3
+
+      - name: Run `docs` command 🚀
+        uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./Video.js/" --key=${{ secrets.README_API_KEY }} --version=1.0
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./DPlayer/" --key=${{ secrets.README_API_KEY }} --version=1.0
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./HLS.js/" --key=${{ secrets.README_API_KEY }} --version=1.0
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./iOS SDK/" --key=${{ secrets.README_API_KEY }} --version=1.0
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./Official Documents/" --key=${{ secrets.README_API_KEY }} --version=1.0

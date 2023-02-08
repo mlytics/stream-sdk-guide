@@ -26,3 +26,6 @@ jobs:
       - uses: readmeio/rdme@v8
         with:
           rdme: docs "./iOS SDK/" --key=${{ secrets.README_API_KEY }} --version=1.0-sit
+      - uses: readmeio/rdme@v8
+        with:
+          rdme: docs "./Official Documents/" --key=${{ secrets.README_API_KEY }} --version=1.0-sit
