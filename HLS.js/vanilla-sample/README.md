@@ -76,7 +76,7 @@ mux.monitor(video, { // here is your 'MUX_DATA_OPTIONS' from mlytics portal
 });
 ```
 
-Now start the service and try to watch request logs in a browser. You could find that the domains in urls of `.m3u8` and `.ts` files, video player seeks for,  would be one of the cdn domains in stream settings rather than the origin domain.
+Now start the service and view the request log in your browser. You should be able to find domains with .m3u8 and .ts extension from one of the CDN domains configured in the stream settings.
 
 
 # Full example
