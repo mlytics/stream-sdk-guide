@@ -8,6 +8,8 @@
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 
+import { driver } from '@mlytics/p2sp-sdk/driver/peripheral/player/videojs/streaming/hls/bundle';
+
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Player',
@@ -23,6 +25,7 @@ export default {
     },
     mounted() {
         this.player = videojs(this.$refs.video, this.options);
+        driver.extensions.VideojsHlsPlugin.adapt(this.player);
     },
     beforeUnmount() {
         if (this.player) {
