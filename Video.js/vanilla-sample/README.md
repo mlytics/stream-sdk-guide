@@ -11,7 +11,7 @@
     ```html
     <script src="https://sdkjs.fusioncdn.com/{CLIENT_ID}-mlysdk.js"></script>
     <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@latest/bundle/driver.min.js"></script>
-    <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@latest/bundle/peripheral/videojs-hls.min.js"></script>
+    <script src="https://jsdelivr.fusioncdn.com/npm/@mlytics/p2sp-sdk@latest/bundle/peripheral/player/videojs-hls.min.js"></script>
     ```
 
 3. Call `mlysdk.driver.initialize()` first.
