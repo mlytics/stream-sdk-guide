@@ -94,7 +94,7 @@
     </script>
     ```
 
-7. Call` driver.extensions.VideojsHlsPlugin.adapt()` after player is ready.
+7. Call `driver.extensions.VideojsHlsPlugin.adapt()` after player is ready.
 
     ```javascript
     <script>

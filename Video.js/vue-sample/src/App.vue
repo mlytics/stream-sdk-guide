@@ -9,6 +9,7 @@ import { driver, VideojsHlsSourcePlugin } from '@mlytics/p2sp-sdk/driver/periphe
 
 import Player from './components/Player.vue';
 
+
 VideojsHlsSourcePlugin.register(videojs);
 
 export default {
