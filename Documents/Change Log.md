@@ -3,6 +3,10 @@ title: Change Log
 category: 63d9d34969da0c007a7219be
 slug: change-log
 ---
+# v0.9.1
+
+1. Support new method of Video.js HLS integration for Vue.js and React.js. Please see the MIGRATING guide after v0.9.0
+
 # v0.9.0
 
 Breaking changes
